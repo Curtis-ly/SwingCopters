@@ -3,6 +3,9 @@
 
 #include "cocos2d.h"
 
+#define DESIN_WIDTTH 640
+#define DESIN_HEIGHT 1136
+
 /**
 @brief    The cocos2d Application.
 
@@ -32,6 +35,8 @@ public:
     @param  the pointer of the application
     */
     virtual void applicationWillEnterForeground();
+private:
+	void setResourceSearchResolution();
 };
 
 #endif // _APP_DELEGATE_H_
