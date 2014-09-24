@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "AtlasLoader.h"
+#include "GameScene.h"
 #include "SimpleAudioEngine.h"
 
 using namespace cocos2d;

@@ -159,7 +159,10 @@ bool WelcomeScene::init()
 
 void WelcomeScene::StartMenuCallback(Ref* sender)
 {
-
+	auto scene = GameScene::create();
+	//auto scene = PicViewerScene::createScene();
+	auto transition = TransitionFade::create(1, scene);
+	Director::getInstance()->replaceScene(transition);
 }
 
 void WelcomeScene::ScoreMenuCallback(Ref* sender)
