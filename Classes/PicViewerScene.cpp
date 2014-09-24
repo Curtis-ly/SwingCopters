@@ -60,6 +60,12 @@ bool PicViewerScene::init()
 	right_menu->setPosition(Vec2::ZERO);
 	this->addChild(right_menu, 1);
 
+	label = LabelTTF::create("", "Arial", 46);
+	label->setString(getSpriteNameByIndex(pos).c_str());
+
+	// position the label on the center of the screen
+	label->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - label->getContentSize().height));
+	this->addChild(label, 1);
 
     return true;
 }
@@ -71,8 +77,7 @@ SpriteFrame* PicViewerScene::getSpriteFrameByIndex(int index) {
 	if (index >= _spriteFrames.size()) {
 		index = 0;
 	}
-
-	for each (auto var in _spriteFrames)
+	for(auto var : _spriteFrames)
 	{
 		if (index == i) {
 			ret = var.second;
@@ -84,24 +89,42 @@ SpriteFrame* PicViewerScene::getSpriteFrameByIndex(int index) {
 	return ret;
 }
 
-void PicViewerScene::LeftMenuItemCallback(Ref* sender)
-{
-	this->removeChildByTag(0x1234);
-	pos++;
-	if (pos >= _spriteFrames.size()) {
-		pos = 0;
+string PicViewerScene::getSpriteNameByIndex(int index) {
+	int i = 0;
+	string ret;
+
+	if (index >= _spriteFrames.size()) {
+		index = 0;
 	}
-	pic = Sprite::createWithSpriteFrame(getSpriteFrameByIndex(pos));
-	this->addChild(pic);
+
+	for (auto var : _spriteFrames)
+	{
+		if (index == i) {
+			ret = var.first;
+			break;
+		}
+		i++;
+	}
+
+	return ret;
 }
 
-void PicViewerScene::RightMenuItemCallback(Ref* sender)
+void PicViewerScene::LeftMenuItemCallback(Ref* sender)
 {
-	this->removeChildByTag(0x1234);
 	pos--;
 	if (pos <= 0) {
 		pos = _spriteFrames.size() - 1;
 	}
-	pic = Sprite::createWithSpriteFrame(getSpriteFrameByIndex(pos));
-	this->addChild(pic);
+	pic->setDisplayFrame(getSpriteFrameByIndex(pos));
+	label->setString(getSpriteNameByIndex(pos).c_str());
+}
+
+void PicViewerScene::RightMenuItemCallback(Ref* sender)
+{
+	pos++;
+	if (pos >= _spriteFrames.size()) {
+		pos = 0;
+	}
+	pic->setDisplayFrame(getSpriteFrameByIndex(pos));
+	label->setString(getSpriteNameByIndex(pos).c_str());
 }

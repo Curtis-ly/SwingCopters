@@ -23,8 +23,10 @@ public:
 private:
 	Map<std::string, SpriteFrame*> _spriteFrames;
 	Sprite *pic;
+	LabelTTF* label;
 	int pos;
 	SpriteFrame* getSpriteFrameByIndex(int index);
+	string getSpriteNameByIndex(int index);
 };
 
 #endif // __PIC_VIEWER_SCENE_H__

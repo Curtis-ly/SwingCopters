@@ -19,6 +19,12 @@ public:
     
     // implement the "static create()" method manually
 	CREATE_FUNC(WelcomeScene);
+private:
+	void StartMenuCallback(Ref* sender);
+	void ScoreMenuCallback(Ref* sender);
+	void RateMenuCallback(Ref* sender);
+	void RemoveAdsMenuCallback(Ref* sender);
+
 };
 
 #endif // __WELCOM_SCENE_H__

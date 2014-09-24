@@ -55,8 +55,8 @@ void LoadingScene::loadingCallBack(Texture2D *texture){
 	SimpleAudioEngine::getInstance()->preloadEffect("steer.ogg");
 
 	// After load all the things, change the scene to new one
-	//auto scene = WelcomeScene::createScene();
-	auto scene = PicViewerScene::createScene();
+	auto scene = WelcomeScene::createScene();
+	//auto scene = PicViewerScene::createScene();
 	auto transition = TransitionFade::create(1, scene);
 	Director::getInstance()->replaceScene(transition);
 }

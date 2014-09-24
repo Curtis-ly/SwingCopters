@@ -3,8 +3,8 @@
 
 #include "cocos2d.h"
 
-#define DESIN_WIDTTH 640
-#define DESIN_HEIGHT 1136
+#define DESIN_WIDTTH 432
+#define DESIN_HEIGHT 768
 
 /**
 @brief    The cocos2d Application.
